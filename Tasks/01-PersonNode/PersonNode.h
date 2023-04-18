@@ -7,6 +7,8 @@ using namespace std;
 class PersonNode
 {
 public:
+	friend class AddressBookSLL;
+
 	PersonNode(void);
 	PersonNode(const string& name, int age);
 	~PersonNode(void);
