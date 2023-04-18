@@ -1,5 +1,5 @@
 # Individual task build
-project(03-BinarySearch LANGUAGES CXX)
+project(01-PersonNode LANGUAGES CXX)
 cmake_minimum_required(VERSION 3.16)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON) # Export compile commands for cppcheck
