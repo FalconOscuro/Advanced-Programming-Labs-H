@@ -35,8 +35,8 @@ void AddressBookSLL::AddPerson(PersonNode* person)
 
     // Traverse SLL until tail node is found
     PersonNode* current = m_head;
-    while (current)
+    while (current->m_next)
         current = current->m_next;
     
-    current->SetNext(person);
+    current->m_next = person;
 }

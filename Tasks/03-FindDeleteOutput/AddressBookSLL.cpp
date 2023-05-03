@@ -35,7 +35,7 @@ void AddressBookSLL::AddPerson(PersonNode* person)
 
     // Traverse SLL until tail node is found
     PersonNode* current = m_head;
-    while (current)
+    while (current->m_next)
         current = current->m_next;
     
     current->SetNext(person);
@@ -43,15 +43,9 @@ void AddressBookSLL::AddPerson(PersonNode* person)
 
 const PersonNode* AddressBookSLL::FindPerson(const string& name) const
 {
-    PersonNode* current = m_head;
-
-    while (current)
-    {
+    for (PersonNode* current = m_head; current; current = current->m_next)
         if (current->GetName() == name)
             return current;
-
-        current = current->m_next;
-    }
     
     return nullptr;
 }
@@ -69,23 +63,18 @@ bool AddressBookSLL::DeletePerson(const string& name)
         return true;
     }
 
-    else
+    PersonNode* previous = m_head;
+    PersonNode* current = previous->m_next;
+    while (current)
     {
-        PersonNode* previous = m_head;
-        PersonNode* current = previous->m_next;
-
-        while (current)
+        if (current->GetName() == name)
         {
-            if (current->GetName() == name)
-            {
-                previous->m_next = current->m_next;
-                delete current;
-                return true;
-            }
-
-            previous = current;
-            current = previous->m_next;
+            previous->m_next = current->m_next;
+            delete current;
+            return true;
         }
+        previous = current;
+        current = previous->m_next;
     }
 
     return false;
