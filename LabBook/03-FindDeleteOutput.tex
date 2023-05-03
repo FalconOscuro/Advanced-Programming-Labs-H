@@ -1,0 +1,61 @@
+\section{Find, Delete and Output}
+    \subsection*{Question}
+        Add the following functionality to the \mintinline{cpp}{AddressBookSLL}
+        class:\\
+
+        \begin{itemize}
+            \item The ability to find a person from the SLL by using their name.
+                This method should return the \mintinline{cpp}{PersonNode} 
+                if the \mintinline{cpp}{PersonNode} is found,
+                or return \mintinline{cpp}{nullptr} if it is not found:\\
+                \begin{minted}[autogobble]{cpp}
+                    const PersonNode* findPerson(const string& name) const;
+                \end{minted}
+
+            \item The ability to delete a person from the SLL by using their name.
+                This method should return \mintinline{cpp}{true} 
+                if the \mintinline{cpp}{PersonNode} was deleted,
+                or return \mintinline{cpp}{false} if it is not deleted (i.e. not found).
+                \begin{minted}[autogobble]{cpp}
+                    bool deletePerson(const string& name);
+                \end{minted}
+
+            \item The ability to output all of the people’s names and ages 
+                in the \mintinline{cpp}{AddressBookSLL} to an \mintinline{cpp}{ostream}.
+        \end{itemize}
+
+    \subsection*{Reflection}
+        \subsubsection*{Find}
+            The \mintinline{cpp}{FindPerson} function works using a single for loop.
+            Each iteration the current pointer traverses along the SLL,
+            if the current pointer is a \mintinline{cpp}{nullptr} the for loop terminates,
+            returning a \mintinline{cpp}{nullptr}.
+            The current node is then checked against the searched for name and returned if a match is found.
+
+        \subsubsection*{Delete}
+            The \mintinline{cpp}{DeletePerson} function works similary to the 
+            \mintinline{cpp}{FindPerson} function. However, it cannot utilize the \mintinline{cpp}{FindPerson}
+            function, as in order to delete a \mintinline{cpp}{PersonNode},
+            the previous node must be known to fill the gap, 
+            and avoid accessing uninitialized memory.
+
+        \subsubsection*{Output}
+            The \mintinline{cpp}{ostream} output works by traversing the SLL and outputting
+            each \mintinline{cpp}{PersonNode} recursively until the tail is reached.
+
+    \subsection*{Solution}
+        \begin{listing}[H]
+            \inputminted[firstline=44, lastline=51]{cpp}{../Tasks/03-FindDeleteOutput/AddressBookSLL.cpp}
+            \caption{Find Person}
+        \end{listing}
+
+        \begin{listing}[H]
+            \inputminted[firstline=53, lastline=81]{cpp}{../Tasks/03-FindDeleteOutput/AddressBookSLL.cpp}
+            \caption{Delte Person}
+        \end{listing}
+
+        \begin{listing}[H]
+            \inputminted[firstline=83, lastline=89]{cpp}{../Tasks/03-FindDeleteOutput/AddressBookSLL.cpp}
+            \inputminted[firstline=42]{cpp}{../Tasks/03-FindDeleteOutput/PersonNode.cpp}
+            \caption{Output}
+        \end{listing}

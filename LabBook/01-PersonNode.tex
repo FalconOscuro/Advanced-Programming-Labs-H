@@ -1,0 +1,21 @@
+\section{Person Node}
+    \subsection*{Question}
+        Add getters and setters to the \mintinline{cpp}{PersonNode} class
+        and make it a friend of the \mintinline{cpp}{AddressBookSLL} class,
+        for easier navigation of the single linked list.
+
+    \subsection*{Reflection}
+        I don't understand the reason why the next node in the chain
+        must be returned as a constant pointer. Besides this there is
+        not much to comment on as the class structure was already created.
+
+    \subsection*{Solution}
+        \begin{listing}[H]
+            \inputminted[firstline=7, lastline=29]{cpp}{../Tasks/01-PersonNode/PersonNode.h}
+            \caption{Person Node Header}
+        \end{listing}
+
+        \begin{listing}[H]
+            \inputminted[firstline=12]{cpp}{../Tasks/01-PersonNode/PersonNode.cpp}
+            \caption{Person Node Source}
+        \end{listing}

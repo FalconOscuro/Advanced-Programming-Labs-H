@@ -1,0 +1,23 @@
+\section{Address Book SLL}
+    \subsection*{Question}
+        Create a function for the \mintinline{cpp}{AddressBookSLL} class
+        to add a new node to the tail of the list using the following
+        prototype:
+        \begin{minted}[autogobble]{cpp}
+            void addPerson(const string& name, int age);
+        \end{minted}
+
+    \subsection*{Reflection}
+        Calling \mintinline{cpp}{AddPerson} using the above prototype simply
+        constructs the node with the given arguments then passes by pointer to
+        an overloaded \mintinline{cpp}{AddPerson} function.
+        First the pointer to the head node is checked, if null, the list is empty
+        so the head pointer is set to the new person and the program terminates.
+        Otherwise the list is traversed until the tail is found,
+        indicated by a null pointer, where the new person is placed.
+
+    \subsection*{Solution}
+        \begin{listing}[H]
+            \inputminted[firstline=22]{cpp}{../Tasks/02-AddressBookSLL/AddressBookSLL.cpp}
+            \caption{Add Person Functions}
+        \end{listing}
